@@ -27,31 +27,41 @@ namespace OOP_Assigment04
             //rectangle.DisplayShapeInfo();
             #endregion
             #region Question2
-            IAuthenticationService AuthService=new BasicAuthenticationService();
+            //IAuthenticationService AuthService=new BasicAuthenticationService();
 
-            Console.Write("Enter username: ");
-            string username = Console.ReadLine();
-            Console.Write("Enter password: ");
-            string password = Console.ReadLine();
+            //Console.Write("Enter username: ");
+            //string username = Console.ReadLine();
+            //Console.Write("Enter password: ");
+            //string password = Console.ReadLine();
 
-            bool isAuto=AuthService.AuthenticateUser(username, password);
-            if (isAuto)
-            {
-                Console.WriteLine("Authentication successful!");
-                Console.Write("Role: ");
-                string role = Console.ReadLine();
-                bool IsAuthorizeUser = AuthService.AuthorizeUser(username, role);
-                if (IsAuthorizeUser)
-                {
-                    Console.WriteLine($"User {username} is authorized for the role '{role}'.");
-                }
-                else
-                    Console.WriteLine($"User {username} is not authorized for the role '{role}'.");
-            }
-            else
-            {
-                Console.WriteLine("Authenticationfailed. Invalid username or password.");
-            }
+            //bool isAuto=AuthService.AuthenticateUser(username, password);
+            //if (isAuto)
+            //{
+            //    Console.WriteLine("Authentication successful!");
+            //    Console.Write("Role: ");
+            //    string role = Console.ReadLine();
+            //    bool IsAuthorizeUser = AuthService.AuthorizeUser(username, role);
+            //    if (IsAuthorizeUser)
+            //    {
+            //        Console.WriteLine($"User {username} is authorized for the role '{role}'.");
+            //    }
+            //    else
+            //        Console.WriteLine($"User {username} is not authorized for the role '{role}'.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Authenticationfailed. Invalid username or password.");
+            //}
+            #endregion
+            #region Question3
+            INotificationService emailService = new EmailNotificationService();
+            INotificationService smsserive = new SmsNotificationService();
+            INotificationService notificationservice=new PushNotificationService();
+
+
+            emailService.SendNotification("SamaSaleh", "This is an email notification!");
+            smsserive.SendNotification("Habibaa", "This is an SMS notification!");
+            notificationservice.SendNotification("Zeyadd", "This is a push notification!");
             #endregion
         }
     }
