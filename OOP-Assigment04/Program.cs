@@ -21,10 +21,37 @@ namespace OOP_Assigment04
             #endregion
             //Part02
             #region Question1
-            ICircle circle = new Circle(5);
-            circle.DisplayShapeInfo();
-            IRectangle rectangle = new Rectangle(7, 9);
-            rectangle.DisplayShapeInfo();
+            //ICircle circle = new Circle(5);
+            //circle.DisplayShapeInfo();
+            //IRectangle rectangle = new Rectangle(7, 9);
+            //rectangle.DisplayShapeInfo();
+            #endregion
+            #region Question2
+            IAuthenticationService AuthService=new BasicAuthenticationService();
+
+            Console.Write("Enter username: ");
+            string username = Console.ReadLine();
+            Console.Write("Enter password: ");
+            string password = Console.ReadLine();
+
+            bool isAuto=AuthService.AuthenticateUser(username, password);
+            if (isAuto)
+            {
+                Console.WriteLine("Authentication successful!");
+                Console.Write("Role: ");
+                string role = Console.ReadLine();
+                bool IsAuthorizeUser = AuthService.AuthorizeUser(username, role);
+                if (IsAuthorizeUser)
+                {
+                    Console.WriteLine($"User {username} is authorized for the role '{role}'.");
+                }
+                else
+                    Console.WriteLine($"User {username} is not authorized for the role '{role}'.");
+            }
+            else
+            {
+                Console.WriteLine("Authenticationfailed. Invalid username or password.");
+            }
             #endregion
         }
     }
